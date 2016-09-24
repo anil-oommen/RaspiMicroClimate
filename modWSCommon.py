@@ -8,7 +8,7 @@ def webserviceInvokeAction(config,webAction,paramDataArray):
 
     ws_hostname = config.get('AppWSConnector', 'hostname')
     ws_port = config.get('AppWSConnector', 'host_port')
-    webservice_invoke = "http://" + ws_hostname + ":"  + str(ws_port) +  "/action/" \
+    webservice_invoke = "http://" + ws_hostname + ":"  + str(ws_port) +  "/rmc_ws/" \
                         + webAction +"?" + url_values
     print ("Invoke WebServices:", webservice_invoke)
     ws_response =  ""

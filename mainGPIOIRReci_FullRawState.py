@@ -75,62 +75,62 @@ def interpetCommand(theCommand):
     if(len(theCommand) < 120): # i dont understand this, and yes has to be 2 Framse, note its string length not mils
         return ".NOT_UNDERSTOOD.Len" + str(len(theCommand))
 
-    wx_command_power = ".UKNo."
-    wx_command_temp = ".UKNc."
-    wx_command_mode = ".UKNm."
+    wx_command_power = "UKN"
+    wx_command_temp = "UKN"
+    wx_command_mode = "UKN"
 
     #The ON OFF Mode
     if(theCommand[4]=="A"):
-        wx_command_power=  ".ONN."
+        wx_command_power=  "ON"
     elif (theCommand[4] == " "):
-        wx_command_power = ".OFF."
+        wx_command_power = "OFF"
 
 
     #The Temperature settings
     if (theCommand[9:13] == "    "):
-        wx_command_temp =  ".16c."
+        wx_command_temp =  "16.0"
     elif (theCommand[9:13] == "A   "):
-        wx_command_temp =  ".17c."
+        wx_command_temp =  "17.0"
     elif (theCommand[9:13] == " A  "):
-        wx_command_temp =  ".18c."
+        wx_command_temp =  "18.0"
     elif (theCommand[9:13] == "AA  "):
-        wx_command_temp =  ".19c."
+        wx_command_temp =  "19.0"
     elif (theCommand[9:13] == "  A "):
-        wx_command_temp =  ".20c."
+        wx_command_temp =  "20.0"
     elif (theCommand[9:13] == "A A "):
-        wx_command_temp =  ".21c."
+        wx_command_temp =  "21.0"
     elif (theCommand[9:13] == " AA "):
-        wx_command_temp =  ".22c."
+        wx_command_temp =  "22.0"
     elif (theCommand[9:13] == "AAA "):
-        wx_command_temp =  ".23c."
+        wx_command_temp =  "23.0"
     elif (theCommand[9:13] == "   A"):
-        wx_command_temp =  ".24c."
+        wx_command_temp =  "24.0"
     elif (theCommand[9:13] == "A  A"):
-        wx_command_temp =  ".25c."
+        wx_command_temp =  "25.0"
     elif (theCommand[9:13] == " A A"):
-        wx_command_temp =  ".26c."
+        wx_command_temp =  "26.0"
     elif (theCommand[9:13] == "AA A"):
-        wx_command_temp =  ".27c."
+        wx_command_temp =  "27.0"
     elif (theCommand[9:13] == "  AA"):
-        wx_command_temp =  ".28c."
+        wx_command_temp =  "28.0"
     elif (theCommand[9:13] == "A AA"):
-        wx_command_temp =  ".29c."
+        wx_command_temp =  "29.0"
     elif (theCommand[9:13] == " AAA"):
-        wx_command_temp =  ".30c."
+        wx_command_temp =  "30.0"
 
 
 
     # The Modes settings
     if (theCommand[1:5] == "   A"):
-        wx_command_mode =  ".AUTO."
+        wx_command_mode =  "AUTO"
     elif (theCommand[1:5] == "A  A"):
-        wx_command_mode =  ".COOL"
+        wx_command_mode =  "COOL"
     elif (theCommand[1:5] == " A A"):
-        wx_command_mode = ".DRY_."
+        wx_command_mode = "DRY"
     elif (theCommand[1:5] == "AA A"):
-        wx_command_mode = ".FAN_."
+        wx_command_mode = "FAN"
     elif (theCommand[1:5] == "  AA"):
-        wx_command_mode = ".HEAT."
+        wx_command_mode = "HEAT"
 
 
 

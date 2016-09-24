@@ -1,0 +1,1 @@
+CREATE TABLE rmc_feed_events(id INTEGER PRIMARY KEY,source TEXT, param_name TEXT,param_value TEXT,create_dt TEXT , create_time  TEXT );

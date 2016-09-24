@@ -1,0 +1,1 @@
+DROP TABLE rmc_feed_events;

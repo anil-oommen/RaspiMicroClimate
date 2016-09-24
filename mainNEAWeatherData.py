@@ -114,7 +114,7 @@ def neaWeatherDaemon():
         paramDataArray['weather_code'] = locForcast.code
         paramDataArray['weather_desc'] = locForcast.desc
         paramDataArray['weather_location'] = locForcast.location
-        webserviceInvokeAction(config,"nea_2hourforecast", paramDataArray)
+        webserviceInvokeAction(config,"neaweather", paramDataArray)
 
         #webserviceInvokeAction(locForcast.code)
 
