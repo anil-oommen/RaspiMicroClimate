@@ -223,9 +223,9 @@ def rmc_node_modules(path):
     return send_from_directory('node_modules', path)
 
 @app.route('/rmc_ws/debug_ir_gpio')
-def rmc_default():
+def rmc_debug_ir_gpio():
     print("Delivering default File:gpio_ir_reciever.sysout")
-    return send_file('gpio_ir_reciever.sysout')
+    return send_file('../gpio_ir_reciever.sysout')
 
 
 @app.route('/')

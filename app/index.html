@@ -30,9 +30,9 @@
 
                     <md-content class="md-padding" layout-xs="column" layout="row">
                         <div flex-xs flex-gt-xs="50" layout="column">
-                             <md-card md-theme="dark-orange" md-theme-watch>
+                             <md-card md-theme="my-theme" md-theme-watch>
                                  <md-card-content>
-                                  <p>*** "Raspi Temperature & Humidity Sensors" current values collected from DHT22 Sensors connected to Raspberry PI.</p>
+                                  <p>"Raspi Temperature & Humidity Sensors" current values collected from DHT22 Sensors connected to Raspberry PI.</p>
                                 </md-card-content>
                                 <md-card-actions layout="row" layout-align="start left">
                                   <md-card-icon-actions>
@@ -64,8 +64,21 @@
 
                             <md-card>
                                  <md-card-content>
-                                  <p>Aircon Settings</p>
+                                  <p>Aircon current settings gathered from the IR Reciever.</p>
                                 </md-card-content>
+                                 <md-card-actions layout="row" layout-align="start left">
+                                  <md-card-icon-actions>
+                                    <md-button  class="md-raised">
+                                      <md-icon flex="50"  md-svg-src="static/svg/temperature.svg"></md-icon>
+                                      {{airconTemperature}} &deg;C</md-button>
+                                    <md-button class="md-raised">
+                                      <md-icon flex="50"  md-svg-src="static/svg/power-button-off.svg"></md-icon>
+                                      {{airconStatus}}  </md-button>
+                                    <md-button class="md-raised">
+                                      <md-icon flex="50"  md-svg-src="static/svg/mode.svg"></md-icon>
+                                      {{airconMode}}   </md-button>
+                                  </md-card-icon-actions>
+                                </md-card-actions>
                              </md-card>
 
 
@@ -83,10 +96,10 @@
 
             </div>
             <div role="tabpanel" id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
-              View for {{data.secondLabel}}<br/> data.selectedIndex = 1
+              TODO
             </div>
             <div role="tabpanel" id="tab3-content" aria-labelledby="tab3" ng-switch-when="2" md-swipe-left="next()" md-swipe-right="previous()">
-              View for Item #3<br/> data.selectedIndex = 2
+              TODO
             </div>
           </ng-switch>
     </div>
@@ -113,6 +126,11 @@
           $mdThemingProvider.theme('dark-orange').backgroundPalette('orange');
           $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
           $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+
+          $mdThemingProvider.theme('my-theme')
+                          .primaryPalette('pink')
+                          .accentPalette('orange');
+
         });
 
   function RMCAppCtrl ( $scope, $http) {
@@ -141,6 +159,11 @@
         $scope.neaForcastWeatherLocation = response.data.now[0].nea_weather_location;
         $scope.neaForcastWeather = response.data.now[0].nea_weather_desc;
         $scope.neaForcastWeatherLastEvent = response.data.now[0].nea_weather_lastfeed;
+
+        $scope.airconTemperature = response.data.now[0].acir_temp;
+        $scope.airconStatus = response.data.now[0].acir_power;
+        $scope.airconMode = response.data.now[0].acir_mode;
+
     }, function(response) {
         //Second function handles error
         $scope.dht22Temperature = "ERR";
@@ -150,6 +173,11 @@
         $scope.neaForcastWeatherLocation = "ERR";
         $scope.neaForcastWeather = "ERR";
         $scope.neaForcastWeatherLastEvent = "ERR";
+
+        $scope.airconTemperature = "ERR";
+        $scope.airconStatus = "ERR";
+        $scope.airconMode = "ERR";
+
     });
 
     //$scope.theTemperature = 100;
