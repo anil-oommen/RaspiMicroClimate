@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/static/app_style.css">
+</head>
+    <body translate="no" >
+
+        <div ng-controller="RMCAppCtrl" ng-cloak="" class="tabsdemoStaticTabs" ng-app="RMCApp">
+
+          <md-content class="md-padding">
+            <md-tabs class="md-accent" md-selected="data.selectedIndex" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
+              <md-tab id="tab1">
+                <md-tab-label>Climate</md-tab-label>
+              </md-tab>
+              <md-tab id="tab2">
+                <md-tab-label>Debug</md-tab-label>
+              </md-tab>
+              <md-tab id="tab3">
+                <md-tab-label>Settings</md-tab-label>
+              </md-tab>
+            </md-tabs>
+          </md-content>
+
+
+          <ng-switch on="data.selectedIndex" class="tabpanel-container">
+            <div role="tabpanel" id="tab1-content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
+
+                    <md-content class="md-padding" layout-xs="column" layout="row">
+                        <div flex-xs flex-gt-xs="50" layout="column">
+                             <md-card md-theme="dark-orange" md-theme-watch>
+                                 <md-card-content>
+                                  <p>*** "Raspi Temperature & Humidity Sensors" current values collected from DHT22 Sensors connected to Raspberry PI.</p>
+                                </md-card-content>
+                                <md-card-actions layout="row" layout-align="start left">
+                                  <md-card-icon-actions>
+                                    <md-button  class="md-raised">
+                                      <md-icon flex="50"  md-svg-src="static/svg/temperature.svg"></md-icon>
+                                      {{dht22Temperature}} &deg;C</md-button>
+                                    <md-button class="md-raised">
+                                      <md-icon flex="50"  md-svg-src="static/svg/weather-2.svg"></md-icon>
+                                      {{dht22Humidity}}  &#37;</md-button>
+                                    <md-button ng-disabled="true" class="md-primary">{{dht22LastEvent}} </md-button>
+                                  </md-card-icon-actions>
+                                </md-card-actions>
+                             </md-card>
+
+                            <md-card>
+                                 <md-card-content>
+                                  <p>NEA Climate 2 Hour forcast for {{neaForcastWeatherLocation}}. Data provided by
+                                      Singapore NEA </p>
+                                </md-card-content>
+                                <md-card-actions layout="row" layout-align="start left">
+                                  <md-card-icon-actions>
+                                    <md-button  class="md-raised">
+                                      <md-icon flex="50"  md-svg-src="static/svg/weather-7.svg"></md-icon>
+                                      {{neaForcastWeather}} </md-button>
+                                    <md-button ng-disabled="true" class="md-primary">{{neaForcastWeatherLastEvent}} </md-button>
+                                  </md-card-icon-actions>
+                                </md-card-actions>
+                             </md-card>
+
+                            <md-card>
+                                 <md-card-content>
+                                  <p>Aircon Settings</p>
+                                </md-card-content>
+                             </md-card>
+
+
+                        </div>
+                    </md-content>
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div role="tabpanel" id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
+              View for {{data.secondLabel}}<br/> data.selectedIndex = 1
+            </div>
+            <div role="tabpanel" id="tab3-content" aria-labelledby="tab3" ng-switch-when="2" md-swipe-left="next()" md-swipe-right="previous()">
+              View for Item #3<br/> data.selectedIndex = 2
+            </div>
+          </ng-switch>
+    </div>
+
+
+<script src='/node_modules/angular/angular.js'></script>
+<script src='/node_modules/angular-animate/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
+<script src='/node_modules/angular-aria/angular-aria.min.js'></script>
+<script src='/node_modules/angular-messages/angular-messages.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
+<script src='/node_modules/angular-material/angular-material.js'></script>
+
+   <script>
+      (function () {
+  'use strict';
+
+  angular
+      .module('RMCApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+      .controller('RMCAppCtrl', RMCAppCtrl)
+      .config(function($mdThemingProvider) {
+
+          $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+          $mdThemingProvider.theme('dark-orange').backgroundPalette('orange');
+          $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+          $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+        });
+
+  function RMCAppCtrl ( $scope, $http) {
+    $scope.envItems = ['BR1:Closed','SR1:Closed','BR1:Open'];
+    $scope.data = {
+      selectedIndex: 0,
+      secondLocked:  true,
+      secondLabel:   "Item Two",
+      bottom:        false
+    };
+    $scope.next = function() {
+      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
+    };
+    $scope.previous = function() {
+      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
+    };
+
+
+    $http.get("rmc_ws/now")
+    .then(function(response) {
+        //First function handles success
+        $scope.dht22Temperature = response.data.now[0].dht22_temperature_dc;
+        $scope.dht22Humidity = response.data.now[0].dht22_humidity_pc;
+        $scope.dht22LastEvent = response.data.now[0].dht22_lastfeed;
+
+        $scope.neaForcastWeatherLocation = response.data.now[0].nea_weather_location;
+        $scope.neaForcastWeather = response.data.now[0].nea_weather_desc;
+        $scope.neaForcastWeatherLastEvent = response.data.now[0].nea_weather_lastfeed;
+    }, function(response) {
+        //Second function handles error
+        $scope.dht22Temperature = "ERR";
+        $scope.dht22Humidity = "ERR";
+        $scope.dht22LastEvent = "ERR";
+
+        $scope.neaForcastWeatherLocation = "ERR";
+        $scope.neaForcastWeather = "ERR";
+        $scope.neaForcastWeatherLastEvent = "ERR";
+    });
+
+    //$scope.theTemperature = 100;
+    //$scope.theHumidity = 100;
+
+    $scope.getSelectedEnv = function() {
+      if ($scope.selectedEnv !== undefined) {
+        return "You have selected: Item " + $scope.selectedEnv;
+      } else {
+        return "Please select an item";
+      }
+    };
+  }
+})();
+
+
+/**
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+**/
+      //# sourceURL=pen.js
+    </script>
+
+
+
+
+
+</body>
+</html>

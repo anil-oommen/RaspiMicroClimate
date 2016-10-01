@@ -1,0 +1,62 @@
+.tabsdemoStaticTabs md-tab-content {
+  padding: 25px; }
+  .tabsdemoStaticTabs md-tab-content:nth-child(1) {
+    background-color: #42A5F5; }
+  .tabsdemoStaticTabs md-tab-content:nth-child(2) {
+    background-color: #689F38; }
+  .tabsdemoStaticTabs md-tab-content:nth-child(3) {
+    background-color: #26C6DA; }
+
+.tabsdemoStaticTabs .after-tabs-area > span {
+  margin-top: 25px;
+  padding-right: 15px;
+  vertical-align: middle;
+  line-height: 30px;
+  height: 35px; }
+
+.tabsdemoStaticTabs .after-tabs-area > md-checkbox {
+  margin-top: 26px;
+  margin-left: 0; }
+
+.tabpanel-container {
+  display: block;
+  position: relative;
+  background: white;
+  border: 0px solid black;
+  height: 600px;
+  overflow: hidden;
+}
+
+[role="tabpanel"] {
+  margin: 2px;
+  padding: 4px;
+  color: black;
+  width: 100%;
+  height: 100%;
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  position:absolute;
+}
+
+[role="tabpanel"].ng-leave.ng-leave-active,
+[role="tabpanel"].ng-enter {
+  top:-300px;
+}
+[role="tabpanel"].ng-leave,
+[role="tabpanel"].ng-enter.ng-enter-active {
+  top:0;
+}
+
+[role="tabpanel"].ng-leave {
+  z-index: 100;
+}
+
+.tabpanel-container [role="tabpanel"] {
+  padding:2px;
+}
+
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+*/
