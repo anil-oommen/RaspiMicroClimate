@@ -10,6 +10,7 @@ import logging
 # Local Modules to include
 from modWSCommon import webserviceInvokeAction
 from modAppConfig import initConfig
+from urllib.request import Request, urlopen
 
 
 
@@ -67,7 +68,10 @@ def getLocalNowcast2Hour(nea_webservice_url,nea_webservice_location):
 
     lF =  LocationForecast()
     try:
-        ws_response = urllib.request.urlopen(nea_webservice_url).read()
+        ws_req = Request(
+            nea_webservice_url,
+            headers={'User-Agent': 'Mozilla/5.0'})
+        ws_response = urllib.request.urlopen(ws_req).read()
 
         logging.debug(ws_response)
         ws_root= etree.fromstring(ws_response)
@@ -106,6 +110,7 @@ def neaWeatherDaemon():
     nea_webservice_url = config.get('NEAWebService', 'nea_ws_url')
     nea_webservice_location = config.get('NEAWebService', 'nea_ws_location')
     nea_webservice_pollinterval_minutes = config.get('NEAWebService', 'nea_ws_poll_interval_minutes')
+    logging.info(nea_webservice_url)
     while 1:
         locForcast= getLocalNowcast2Hour(nea_webservice_url,nea_webservice_location)
         logging.info("NEA LookupInfo :" +  locForcast.location  + " > " +  locForcast.code +"." + locForcast.desc)
