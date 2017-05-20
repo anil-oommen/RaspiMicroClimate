@@ -37,3 +37,6 @@ sudo pip3 install flask-babel
 sudo pip3 install guess_language
 sudo pip3 install flipflop
 sudo pip3 install coverage
+
+Changes Made :
+26 Dec , Test from Home
