@@ -86,7 +86,7 @@ def rmcWebServiceDHT22():
         curr_dht22_temperature_dc = temperature_dc[:4]
         curr_dht22_humidity_pc = humidity_pc[:4]
 
-        curr_dht22_lastfeed = strftime("%b %d %H:%M", gmtime())
+        curr_dht22_lastfeed = strftime("%b %d %H:%M", localtime())
 
         cursor.close()
         db.commit()
