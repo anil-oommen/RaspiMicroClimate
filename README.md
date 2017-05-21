@@ -1,29 +1,35 @@
 # RaspiMicroClimate
 
+Raspberry PI & Arudino Project for MicroClimate Control.
+'RaspiMicroClimate' is the IOT Data Collecter and in future the Controller.
+##Components & Feature 1.0 
+* Raspberry Pi : Connect to NEA Webservices for Current weather outside.
+* Raspberry Pi : Collect Temperature and Humidity using DHT22 , GPIO
+* Arudino : Listen to current Aircon Settings using IR Reader GPIO, Monitor Mode, Temperature and on/off
+* Raspberry : Web Service for collating all data from sensors to a sqlite3 database , uses flask for webserver.
+* Raspberry : Web Application built in AngularJS for UI 
+ 
+![Alt text](screenshot.png "RaspiMicroClimate Screenshot")
 
-Project RasberryPI 3 with Python3
-run 'main' as python3 xxxx.py
+##Components & Feature 2.0 [comming]
+* Analytics on data set
+* Implement ML to train Aircon to optimal temp/humidity with auto switch over/on.
+* Add IR Transmitter to control via Arudino.
 
 
-This Project Can be moved and renamed to
-Features 
-  Python Based WebServer with AngularJS Index Page and static segments. 
-  Webservices invocation to Python WebServer above.
-  GPIO Button handler for WebServices Invocation.
-  GPIO LIRC , AC Remote for Europace listen to Mode, Power and temperature. 
-  NEA Weather Consumption and submission to Local Python WebServer for Location.
-
-
-
-External Sources and Licence Information.
-http://www.flaticon.com/categories/weather/22
+## Resources & References
 
 Aircon Notes :
 Ideal Humidity 40 - 50 % , Lower the Himidity the cooler it is and more efficient for AC Cooling.
 Mode  DRY, Humidity Control (drops icon) reduce humidity witout too much cooling , by pulling air to dehumidify.
 
 
-TODO
+
+External Sources and Licence Information.
+http://www.flaticon.com/categories/weather/22
+
+
+
 Installing flask instead of klien
 http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 
@@ -41,5 +47,3 @@ sudo pip3 install guess_language
 sudo pip3 install flipflop
 sudo pip3 install coverage
 
-Changes Made :
-20 May 17 , Test from Home
