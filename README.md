@@ -18,6 +18,9 @@ Features
 External Sources and Licence Information.
 http://www.flaticon.com/categories/weather/22
 
+Aircon Notes :
+Ideal Humidity 40 - 50 % , Lower the Himidity the cooler it is and more efficient for AC Cooling.
+Mode  DRY, Humidity Control (drops icon) reduce humidity witout too much cooling , by pulling air to dehumidify.
 
 
 TODO

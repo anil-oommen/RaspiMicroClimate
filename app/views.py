@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, request, Response ,send_from
 import json
 from app import app
 from modAppConfig import initConfig
-from time import gmtime, strftime
+from time import gmtime, strftime, localtime
 
 import sqlite3
 config = initConfig()
@@ -52,7 +52,7 @@ def rmcWebServiceNEA():
         curr_nea_weather_code=weather_code
         curr_nea_weather_desc = weather_desc
         curr_nea_weather_location = weather_location
-        curr_nea_weather_lastfeed = strftime("%b %d %H:%M", gmtime())
+        curr_nea_weather_lastfeed = strftime("%b %d %H:%M", localtime())
 
 
         cursor.close()
@@ -118,7 +118,7 @@ def rmcWebServiceAirconIR():
         curr_acir_power = power
         curr_acir_temp = temp
         curr_acir_mode = mode
-        curr_acir_lastfeed = strftime("%b %d %H:%M", gmtime())
+        curr_acir_lastfeed = strftime("%b %d %H:%M", localtime())
 
         cursor.close()
         db.commit()
