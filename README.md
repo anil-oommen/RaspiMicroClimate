@@ -2,16 +2,18 @@
 
 Raspberry PI & Arudino Project for MicroClimate Control.
 'RaspiMicroClimate' is the IOT Data Collecter and in future the Controller.
-##Components & Feature 1.0 
+
+## Components & Feature 1.0 
 * Raspberry Pi : Connect to NEA Webservices for Current weather outside.
 * Raspberry Pi : Collect Temperature and Humidity using DHT22 , GPIO
 * Arudino : Listen to current Aircon Settings using IR Reader GPIO, Monitor Mode, Temperature and on/off
 * Raspberry : Web Service for collating all data from sensors to a sqlite3 database , uses flask for webserver.
 * Raspberry : Web Application built in AngularJS for UI 
  
-![Alt text](screenshot.png "RaspiMicroClimate Screenshot")
 
-##Components & Feature 2.0 [comming]
+<img src="screenshot.png" align="left"  />
+
+## Components & Feature 2.0 [comming]
 * Analytics on data set
 * Implement ML to train Aircon to optimal temp/humidity with auto switch over/on.
 * Add IR Transmitter to control via Arudino.
