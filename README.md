@@ -49,3 +49,12 @@ sudo pip3 install guess_language
 sudo pip3 install flipflop
 sudo pip3 install coverage
 
+## Installation of Adafruit_Python_DHT for Raspberry PI
+https://github.com/adafruit/Adafruit_Python_DHT
+
+https://pillow.readthedocs.io/en/latest/installation.html
+
+# Upgrading pip3 installed packages
+pip3 freeze > requirements.txt
+pip3 install --upgrade -r requirements.txt
+rm requirements.txt
