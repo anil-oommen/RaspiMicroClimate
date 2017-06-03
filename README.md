@@ -49,6 +49,8 @@ sudo pip3 install guess_language
 sudo pip3 install flipflop
 sudo pip3 install coverage
 
+sudo pip3 install pyserial
+
 ## Installation of Adafruit_Python_DHT for Raspberry PI
 https://github.com/adafruit/Adafruit_Python_DHT
 
