@@ -14,7 +14,7 @@ Raspberry PI & Arudino Project for MicroClimate Control.
 * Raspberry Pi
 * Arduino UNO : Connected to Raspberry via USB for Serial Communication.
 * DHT22 Temperature & Humidity Sensor , connected to Raspberry PI
-* IR 
+* IR
 
 <img src="screenshot.png" align="left"  />
 
