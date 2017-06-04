@@ -30,8 +30,6 @@ Mode  DRY, Humidity Control (drops icon) reduce humidity witout too much cooling
 External Sources and Licence Information.
 http://www.flaticon.com/categories/weather/22
 
-
-
 Installing flask instead of klien
 http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 
