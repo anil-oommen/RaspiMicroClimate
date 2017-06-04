@@ -9,7 +9,12 @@ Raspberry PI & Arudino Project for MicroClimate Control.
 * Arudino : Listen to current Aircon Settings using IR Reader GPIO, Monitor Mode, Temperature and on/off
 * Raspberry : Web Service for collating all data from sensors to a sqlite3 database , uses flask for webserver.
 * Raspberry : Web Application built in AngularJS for UI 
- 
+
+## Electronics & Wiring
+* Raspberry Pi
+* Arduino UNO : Connected to Raspberry via USB for Serial Communication.
+* DHT22 Temperature & Humidity Sensor , connected to Raspberry PI
+* IR 
 
 <img src="screenshot.png" align="left"  />
 
@@ -53,8 +58,6 @@ sudo pip3 install pyserial
 
 ## Installation of Adafruit_Python_DHT for Raspberry PI
 https://github.com/adafruit/Adafruit_Python_DHT
-
-https://pillow.readthedocs.io/en/latest/installation.html
 
 # Upgrading pip3 installed packages
 pip3 freeze > requirements.txt
